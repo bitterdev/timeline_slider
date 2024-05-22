@@ -20,7 +20,7 @@ defined('C5_EXECUTE') or die('Access denied');
             </label>
 
             <input type="number" value="<%=year%>" id="year-<%=id%>" name="items[<%=id%>][year]"
-                   class="form-control" min="1970" max="3000" step="1"/>
+                   class="form-control" min="1900" max="3000" step="1"/>
         </div>
 
         <div class="form-group">
