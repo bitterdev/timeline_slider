@@ -23,6 +23,15 @@ class Controller extends BlockController
         return t("Timeline Slider");
     }
 
+    public function edit()
+    {
+        $db = $this->app->make(Connection::class);
+        $items = $db->fetchAll("SELECT * FROM btTimelineSliderItems WHERE bID = ?", [$this->bID]);
+        $year = array_column($items, 'year');
+        array_multisort($year, SORT_ASC, $items);
+        $this->set("items", $items);
+    }
+
     public function view()
     {
         /** @var Connection $db */
@@ -38,13 +47,6 @@ class Controller extends BlockController
     {
         $this->set("items", []);
         $this->set("targetPage", null);
-    }
-
-    public function edit()
-    {
-        /** @var Connection $db */
-        $db = $this->app->make(Connection::class);
-        $this->set("items", $db->fetchAll("SELECT * FROM btTimelineSliderItems WHERE bID = ?", [$this->bID]));
     }
 
     public function delete()

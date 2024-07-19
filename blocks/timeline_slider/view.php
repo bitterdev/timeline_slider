@@ -32,7 +32,7 @@ defined('C5_EXECUTE') or die('Access denied');
                 </h2>
 
                 <p>
-                    <?php echo $item["description"]; ?>
+                    <?php echo nl2br($item["description"]); ?>
                 </p>
             </div>
         </div>
